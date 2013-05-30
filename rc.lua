@@ -37,10 +37,18 @@ do
 end
 
 --{{---- Theme ----------------------------------
-config_dir = ("/home/dan/.config/awesome/")
-themes_dir = (config_dir .. "/themes")
-beautiful.init(themes_dir .. "/dainty/theme.lua")
 
+--home = os.getenv("HOME")
+--config_dir = home .. "/.config/awesome"
+--themes_dir = config_dir .. "/themes"
+--active_theme = themes_dir .. "/dainty"
+
+--beautiful.init(active_theme .. "/theme.lua")
+
+--config_dir = ("/home/dan/.config/awesome")
+--themes_dir = (config_dir .. "/themes")
+--beautiful.init(themes_dir .. "/dainty/theme.lua")
+beautiful.init("/home/dan/.config/awesome/themes/dainty/theme.lua")
 
 --{{---- Variables ------------------------------
 terminal = "urxvt"
@@ -107,11 +115,11 @@ myofficemenu = {
 
 mymainmenu = awful.menu({ items = {
   {" awesome",              myawesomemenu, beautiful.awesome_icon },
-  {" web",                  mywebmenu, beautiful.internet},
-  {" graphics",             mygraphicsmenu},
-  {" multimedia",           mymultimediamenu},
-  {" office",               myofficemenu},
-  {" terminal",             terminal}
+  {" web",                  mywebmenu, beautiful.men1},
+  {" graphics",             mygraphicsmenu, beautiful.men1},
+  {" multimedia",           mymultimediamenu, beautiful.men1},
+  {" office",               myofficemenu, beautiful.men1},
+  {" terminal",             terminal, beautiful.men3}
 }
 })
 

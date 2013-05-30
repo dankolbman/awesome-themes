@@ -4,19 +4,19 @@ theme = {}
 theme.theme_dir	= os.getenv("HOME") .. "/.config/awesome/themes/dainty"
 theme.wallpaper	= theme.theme_dir .. "/background.jpg"
 
-theme.wifont	= "#DDDDDD"
+theme.wifont	= "#ffffff"
 
 theme.font          = "Terminus 9"
 
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#d8d8d8"
-theme.bg_urgent     = "#d02e54"
-theme.bg_minimize   = "#444444"
+theme.bg_focus      = "#444444"
+theme.bg_urgent     = "#222222"
+theme.bg_minimize   = "#222222"
 
-theme.fg_normal     = "#cccccc"
-theme.fg_focus      = "#000000"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = "#888888"
+theme.fg_focus      = "#aaaaaa"
+theme.fg_urgent     = "#888888"
+theme.fg_minimize   = "#888888"
 
 theme.border_width  = "1"
 theme.border_normal = "#000000"
