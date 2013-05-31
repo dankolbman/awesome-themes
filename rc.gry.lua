@@ -92,14 +92,14 @@ end
 
 --{{---- Menu -----------------------------------
 myawesomemenu = {
-	{ "restart", awesome.restart },
-	{ "edit rc.lua", editor_cmd .. "~/.config/awesome/rc.lua" },
-	{ "reboot", "sudo reboot"},
-	{ "quit", awesome.quit }
+	{ "restart", awesome.restart, beautiful.texmaker_icon },
+	{ "edit rc.lua", editor_cmd .. home .. "/.config/awesome/rc.lua", beautiful.texmaker_icon },
+	{ "reboot", "sudo reboot", beautiful.texmaker_icon},
+	{ "quit", awesome.quit, beautiful.texmaker_icon }
 }
 
 mywebmenu = {
-	{"Chromium", "chromium", beautiful.chromium_icon}
+	{"Internet", browser, beautiful.noicon}
 }
 
 
@@ -123,18 +123,18 @@ mytoolsmenu = {
 }
 
 mysettingsmenu = {
-	{"Alsa", terminal_cmd .. "alsa-mixer", beautiful.noicon},
+	{"Alsa", terminal_cmd .. "alsamixer", beautiful.noicon},
 	{"Wicd", terminal_cmd .. "wicd-curses", beautiful.noicon}
 }
 
 
 mymainmenu = awful.menu({ items = {
-	{" awesome",		myawesomemenu, beautiful.awesome_icon },
+	{" awesome",		myawesomemenu, beautiful.men2 },
 	{" web",		mywebmenu, beautiful.men1},
 	{" graphics",		mygraphicsmenu, beautiful.men1},
 	{" multimedia",		mymultimediamenu, beautiful.men1},
 	{" office",		myofficemenu, beautiful.men1},
-	{" tools",		mytoolsmenu, beautiful.ment1},
+	{" tools",		mytoolsmenu, beautiful.men1},
 	{" settings",		mysettingsmenu, beautiful.men1},
 	{" file manager",	terminal_cmd .. filemanager, beautiful.men1},
 	{" terminal",		terminal, beautiful.men3}
@@ -225,6 +225,42 @@ div6:set_image(beautiful.div6)
 div7 = wibox.widget.imagebox()
 div7:set_image(beautiful.div7)
 
+--{{---- Launchers ------------------------------
+
+fmlauncher = wibox.widget.imagebox()
+fmlauncher:set_image(beautiful.foldericon)
+fmlauncher:buttons(awful.util.table.join(awful.button({ }, 1,
+function () awful.util.spawn(terminal_cmd .. filemanager .. " ~/") end)))
+
+
+vollauncher = wibox.widget.imagebox()
+--vollauncher:buttons(awful.util.table.join(awful.button({ }, 1, 
+--function () awful.util.spawn(terminal_cmd .. "alsamixer") end)))
+
+vollauncher:buttons(awful.util.table.join(
+    awful.button({ }, 1, function () awful.util.spawn("amixer -q set Master toggle", false) end),
+    awful.button({ }, 3, function () awful.util.spawn(terminal_cmd .. "alsamixer", true) end),
+    awful.button({ }, 4, function () awful.util.spawn("amixer -q set Master 1dB+", false) end),
+    awful.button({ }, 5, function () awful.util.spawn("amixer -q set Master 1dB-", false) end)
+))
+
+vicious.register(vollauncher, vicious.widgets.volume, function(widget, args)
+	if  args[2] == "♩" then		-- MUTE
+		vollauncher:set_image(beautiful.spkrmute)
+	else 
+		local vol = tonumber(args[1])
+		if vol < 65 then
+			vollauncher:set_image(beautiful.spkrlow)
+		elseif vol < 85 then
+			vollauncher:set_image(beautiful.spkrmed)
+		else 
+			vollauncher:set_image(beautiful.spkrhigh)
+		end
+		return args[1]
+	end
+end, 60, 'Master')
+
+
 
 
 --{{---- Temperature ----------------------------
@@ -297,7 +333,7 @@ vicious.register(neticon, vicious.widgets.wifi, function(widget, args)
     else
         neticon:set_image(beautiful.wifilow)
     end
-end, 110, 'wlan1')
+end, 120, 'wlan1')
 
 --{{---- Clock ----------------------------------
 
@@ -337,22 +373,23 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
 
     -- Organize this how you'd like
---    right_layout:add(div1)
-    --
+    right_layout:add(fmlauncher)
+    right_layout:add(vollauncher)
+    -- Harddrive
     right_layout:add(div1)
     right_layout:add(hdicon)
     right_layout:add(hdwidget)
-    --
+    -- Temperature
     right_layout:add(div2)
     right_layout:add(tempicon)
     right_layout:add(tempwidget)
-    --
+    -- Memory/CPU
     right_layout:add(div3)
     right_layout:add(memicon)
     right_layout:add(memwidget)
     right_layout:add(cpuicon)
     right_layout:add(cpuwidget)
-    --
+    -- Battery/wifi/clock
     right_layout:add(div4)
 --    right_layout:add(baticon)
 --    right_layout:add(batwidget)
