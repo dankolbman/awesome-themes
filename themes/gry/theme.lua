@@ -11,13 +11,11 @@ theme.grey3     = "#bbbbbb"
 theme.grey4     = "#aaaaaa"
 theme.grey5     = "#999999"
 theme.grey6     = "#222222"
-theme.grey7     = "#cccccc"
 
 theme.orange    = "#dc9b30"
 theme.red       = "#c45a41"
 theme.green     = "#5d6042"
 theme.blue      = "#0076a3"
-theme.grey      = "#222222"
 
 --{{---- Common ---------------------------------
 
@@ -31,17 +29,17 @@ theme.font          = "Terminus 9"
 
 theme.bg_normal     = theme.grey1
 theme.bg_focus      = theme.grey2
-theme.bg_urgent     = "#222222"
-theme.bg_minimize   = "#222222"
+theme.bg_urgent     = theme.grey6
+theme.bg_minimize   = theme.grey6
 
-theme.fg_normal     = "#222222"
-theme.fg_focus      = "#0076a3"
-theme.fg_urgent     = "#888888"
-theme.fg_minimize   = "#888888"
+theme.fg_normal     = theme.grey6
+theme.fg_focus      = theme.grey6
+theme.fg_urgent     = theme.grey5
+theme.fg_minimize   = theme.grey5
 
 theme.border_width  = "1"
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
+theme.border_normal = theme.grey4
+theme.border_focus  = theme.grey2
 theme.border_marked = "#91231c"
 
 
@@ -70,14 +68,17 @@ theme.awesome_icon      = theme.theme_dir .. "/awesome.png"
 theme.menu              = theme.theme_dir .. "/menu.png"
 
 theme.batteryicon       = theme.theme_dir .. "/icons/battery4.png"
+theme.foldericon	= theme.theme_dir .. "/icons/fmanager.png"
 theme.cdicon            = theme.theme_dir .. "/icons/cd.png"
 theme.cpuicon            = theme.theme_dir .. "/icons/cpu3.png"
 theme.hdicon            = theme.theme_dir .. "/icons/hd1.png"
 theme.mailicon          = theme.theme_dir .. "/icons/mail.png"
 theme.muteicon          = theme.theme_dir .. "/icons/mute.png"
 theme.ramicon           = theme.theme_dir .. "/icons/ram3.png"
-theme.spkricon          = theme.theme_dir .. "/icons/spkr.png"
-theme.spkronicon        = theme.theme_dir .. "/icons/spkron.png"
+theme.spkrhigh		= theme.theme_dir .. "/icons/spkrhigh.png"
+theme.spkrmed		= theme.theme_dir .. "/icons/spkrmed.png"
+theme.spkrlow           = theme.theme_dir .. "/icons/spkrlow.png"
+theme.spkrmute		= theme.theme_dir .. "/icons/spkrmute.png"
 theme.tempicon          = theme.theme_dir .. "/icons/temp2.png"
 theme.terminalicon      = theme.theme_dir .. "/icons/terminal.png"
 theme.wifihigh	        = theme.theme_dir .. "/icons/wifih4.png"
@@ -94,7 +95,7 @@ theme.texmaker_icon     = theme.theme_dir .. "/apps/noicon.png"
 --{{---- Layouts  -------------------------------
 
 theme.layout_floating   = theme.theme_dir .. "/layouts/float.png"
-theme.layout_tile       = theme.theme_dir .. "/layouts/tile_right.png"
+theme.layout_tile       = theme.theme_dir .. "/layouts/tile.png"
 theme.layout_tileleft   = theme.theme_dir .. "/layouts/tile_left.png"
 theme.layout_tilebottom = theme.theme_dir .. "/layouts/tile_bottom.png"
 theme.layout_tiletop    = theme.theme_dir .. "/layouts/tile_top.png"
