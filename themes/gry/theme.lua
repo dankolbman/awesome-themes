@@ -84,7 +84,7 @@ theme.wifihigh	        = theme.theme_dir .. "/icons/wifih4.png"
 theme.wifimed          = theme.theme_dir .. "/icons/wifim4.png"
 theme.wifilow          = theme.theme_dir .. "/icons/wifil4.png"
 
-
+theme.noicon		= theme.theme_dir .. "/apps/noicon.png"
 theme.chromium_icon     = theme.theme_dir .. "/apps/noicon.png"
 theme.vlc_icon          = theme.theme_dir .. "/apps/noicon.png"
 theme.inkscape_icon     = theme.theme_dir .. "/apps/noicon.png"
@@ -93,6 +93,7 @@ theme.texmaker_icon     = theme.theme_dir .. "/apps/noicon.png"
 
 --{{---- Layouts  -------------------------------
 
+theme.layout_floating   = theme.theme_dir .. "/layouts/float.png"
 theme.layout_tile       = theme.theme_dir .. "/layouts/tile_right.png"
 theme.layout_tileleft   = theme.theme_dir .. "/layouts/tile_left.png"
 theme.layout_tilebottom = theme.theme_dir .. "/layouts/tile_bottom.png"

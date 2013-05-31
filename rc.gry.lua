@@ -45,16 +45,17 @@ active_theme = themes_dir .. "/gry"
 
 beautiful.init(active_theme .. "/theme.lua")
 
---config_dir = ("/home/dan/.config/awesome")
---themes_dir = (config_dir .. "/themes")
---beautiful.init(themes_dir .. "/dainty/theme.lua")
---beautiful.init("/home/dan/.config/awesome/themes/dainty/theme.lua")
-
 --{{---- Variables ------------------------------
 terminal = "urxvt"
+terminal_cmd = terminal .. " -e "
 
-editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
+editor = "vim"
+editor_cmd = terminal_cmd .. editor .. " "
+
+browser = "chromium"
+filemanager = "mc"
+
+
 -- alt key
 modkey = "Mod1"
 
@@ -91,37 +92,53 @@ end
 
 --{{---- Menu -----------------------------------
 myawesomemenu = {
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+	{ "restart", awesome.restart },
+	{ "edit rc.lua", editor_cmd .. "~/.config/awesome/rc.lua" },
+	{ "reboot", "sudo reboot"},
+	{ "quit", awesome.quit }
 }
 
 mywebmenu = {
-   {"Chromium", "chromium", beautiful.chromium_icon}
+	{"Chromium", "chromium", beautiful.chromium_icon}
 }
 
 
 mymultimediamenu = {
-   {"VLC", "vlc", beautiful.vlc_icon}
+	{"VLC", "vlc", beautiful.vlc_icon}
 }
 
 mygraphicsmenu = {
-   {"Inkscape", "inkscape", beautiful.inkscape_icon}
+	{"Gimp", "gimp",  beautiful.noicon}, 
+	{"Inkscape", "inkscape", beautiful.inkscape_icon}
 }
 
 myofficemenu = {
-   {"TEX Maker", "texmaker", beautiful.texmaker_icon}
+	{"TEX Maker", "texmaker", beautiful.texmaker_icon},
+	{"Evince", "evince", beautiful.noicon}
 }
 
+mytoolsmenu = {
+	{"7zip", "7zFM", beautiful.noicon},
+	{"htop", "htop", beautiful.nocion}
+}
+
+mysettingsmenu = {
+	{"Alsa", terminal_cmd .. "alsa-mixer", beautiful.noicon},
+	{"Wicd", terminal_cmd .. "wicd-curses", beautiful.noicon}
+}
 
 
 mymainmenu = awful.menu({ items = {
-  {" awesome",              myawesomemenu, beautiful.awesome_icon },
-  {" web",                  mywebmenu, beautiful.men1},
-  {" graphics",             mygraphicsmenu, beautiful.men1},
-  {" multimedia",           mymultimediamenu, beautiful.men1},
-  {" office",               myofficemenu, beautiful.men1},
-  {" terminal",             terminal, beautiful.men3}
-}
+	{" awesome",		myawesomemenu, beautiful.awesome_icon },
+	{" web",		mywebmenu, beautiful.men1},
+	{" graphics",		mygraphicsmenu, beautiful.men1},
+	{" multimedia",		mymultimediamenu, beautiful.men1},
+	{" office",		myofficemenu, beautiful.men1},
+	{" tools",		mytoolsmenu, beautiful.ment1},
+	{" settings",		mysettingsmenu, beautiful.men1},
+	{" file manager",	terminal_cmd .. filemanager, beautiful.men1},
+	{" terminal",		terminal, beautiful.men3}
+	}
 })
 
 mylauncher = awful.widget.launcher({ image = beautiful.menu,
@@ -343,7 +360,7 @@ for s = 1, screen.count() do
     right_layout:add(netwidget)
     right_layout:add(div5)
     right_layout:add(mytextclock)
-    right_layout:add(div7)
+    right_layout:add(div6)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
