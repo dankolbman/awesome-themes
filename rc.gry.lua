@@ -54,6 +54,7 @@ editor_cmd = terminal_cmd .. editor .. " "
 
 browser = "chromium"
 filemanager = "mc"
+wirelessmanager = "wicd-curses"
 
 
 -- alt key
@@ -321,6 +322,9 @@ neticon = wibox.widget.imagebox()
 netwidget = wibox.widget.textbox()
 
 neticon:set_image(beautiful.wifihigh)
+
+neticon:buttons(awful.util.table.join(awful.button({ }, 1,
+function () awful.util.spawn(terminal_cmd .. wirelessmanager) end)))
 vicious.register(netwidget, vicious.widgets.wifi, "<span background='" .. beautiful.grey5 .. "' font='Terminus 12'> <span font='" .. beautiful.font .. "' color='" .. beautiful.wifont .. "'>${link}% </span></span>", 120, 'wlan1')
 
 
